@@ -1,7 +1,7 @@
 const router = require("express").Router();
-const controller = require("../controller/controller");
+const controller = require("../controllers/controller");
 
 // GET
-router.get("/block/:height", controller.blockExplorer);
+router.get("/:height", controller.blockExplorer);
 
 module.exports = router;
