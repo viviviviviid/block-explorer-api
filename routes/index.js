@@ -1,5 +1,5 @@
-const block = require("./route");
+const routes = require("./route");
 
 module.exports = (app) => {
-  app.use("/block", block);
+  app.use("/block", routes);
 };
