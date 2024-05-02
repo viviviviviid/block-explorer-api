@@ -36,7 +36,7 @@ const addressTracker = async (req, res) => {
     const { address, height } = req.params;
     const txs = (await fetchBlockData(height)).result.transactions;
 
-    var result = [0,0,0];                               // [to_Value, from_Value, gasPrice]
+    var result = [0,0,0];        // [Inflow Value, Outflow Value, Fee Summary]
     txs.forEach(el => {
       if(el.to !== address && el.from !== address)
         return;
@@ -44,7 +44,7 @@ const addressTracker = async (req, res) => {
       const value = parseInt(el.value, 16);
       const gas = parseInt(el.gas, 16); 
       // if 두개로 한 이유 : 입금자와 출금자가 같은 경우도 고려
-      if (el.to === address) { // 입금대상자일때
+      if (el.to === address) {   // 입금대상자일때
         result[0] += value;
         result[2] += gas;
       }
